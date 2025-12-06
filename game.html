@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game with Hint</title>
+
+    <style>
+        body {
+            background: #141414;
+            color: white;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .game-box {
+            background: #222;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #e50914;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff3030;
+        }
+        span{
+            color: #e57309;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-box">
+
+        
+        <h1>Guessing Game</h1>
+        <p>Click to play!</p>
+        <button id="startBtn">Start Game</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById("startBtn").addEventListener("click", function () {
+
+            let gameN = 25;
+            let attempts = 0;
+            let userN = prompt("Guess a number:");
+
+            while (userN != gameN) {
+                attempts++;
+
+                if (attempts == 5) {
+                    if (userN < gameN) {
+                        alert("Hint: The number is HIGHER than " + userN);
+                    } else {
+                        alert("Hint: The number is LOWER than " + userN);
+                    }
+                }
+
+                userN = prompt("Wrong number, guess again:");
+                
+            }
+
+            document.getElementById("result").innerText =
+                "🎉 Congratulations! You guessed correctly in " + attempts + " attempts!";
+        });
+    </script>
+
+</body>
+
+</html>
